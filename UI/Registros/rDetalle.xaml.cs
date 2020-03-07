@@ -152,9 +152,11 @@ namespace rDetalle.UI.Registros
             int id;
             Personas persona = new Personas();
             int.TryParse(IdTextBox.Text, out id);
-
             Limpiar();
-            PersonasBLL.Buscar(id);
+
+
+            persona = PersonasBLL.Buscar(id);
+            
             if (persona != null)
             {
                 LlenaClampos(persona);
@@ -170,21 +172,7 @@ namespace rDetalle.UI.Registros
             DetalleDataGrid.ItemsSource = this.Detalle;
         }
 
-        private void Busqueda(int id)
-        {
-            Personas persona = new Personas();
-            persona = PersonasBLL.Buscar(id);
-            if(persona != null)
-            {
-                Detalle = persona.Telefonos;
-                DetalleDataGrid.ItemsSource = null;
-                DetalleDataGrid.ItemsSource = Detalle;
-            }
-            else
-            {
-                MessageBox.Show("No existe esa persona");
-            }
-        }
+    
 
         private void AgregarButton_Click(object sender, RoutedEventArgs e)
         {

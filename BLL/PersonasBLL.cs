@@ -35,7 +35,7 @@ namespace rDetalle.BLL
             Contexto db = new Contexto();
             try
             {
-                var Anterior = db.Personas.Find(Persona.PersonaId);
+                var Anterior = Buscar(Persona.PersonaId);
                 foreach (var item in Anterior.Telefonos)
                 {
                     {
