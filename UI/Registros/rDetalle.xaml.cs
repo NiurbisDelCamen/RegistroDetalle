@@ -19,11 +19,13 @@ namespace rDetalle.UI.Registros
     /// </summary>
     public partial class RDetalle : Window
     {
+        Personas persona = new Personas();
         public List<TelefonosDetalle> Detalle { get; set; }
         public RDetalle()
         {
             InitializeComponent();
             this.Detalle = new List<TelefonosDetalle>();
+            this.DataContext = persona;
         }
 
         private void Limpiar()
@@ -36,33 +38,8 @@ namespace rDetalle.UI.Registros
             this.Detalle = new List<TelefonosDetalle>();
             CargaGrid();
         }
-        private Personas LlenaClase()
-        {
-            Personas persona = new Personas();
-            if (string.IsNullOrWhiteSpace(IdTextBox.Text))
-            {
-                IdTextBox.Text = "0";
-            }
-            else
-                persona.PersonaId = Convert.ToInt32(IdTextBox.Text);
-            persona.Nombre = NombreTextBox.Text;
-            persona.Cedula = CedulaTextBox.Text;
-            persona.Direccion = DireccionTextBox.Text;
-            persona.FNacimiento = Convert.ToDateTime(FNacimientoDatePicker.SelectedDate);
-            persona.Telefonos = this.Detalle;
-            return persona;
-        }
-        private void LlenaClampos(Personas persona)
-        {
-            IdTextBox.Text = Convert.ToString(persona.PersonaId);
-            NombreTextBox.Text = persona.Nombre;
-            CedulaTextBox.Text = persona.Cedula;
-            DireccionTextBox.Text = persona.Direccion;
-            FNacimientoDatePicker.SelectedDate = persona.FNacimiento;
-
-            this.Detalle = persona.Telefonos;
-            CargaGrid();
-        }
+       
+     
 
         private bool Validar()
         {
@@ -109,11 +86,11 @@ namespace rDetalle.UI.Registros
 
         private void GuardarButton_Click(object sender, RoutedEventArgs e)
         {
-            Personas persona;
+            
             bool paso = false;
             if (!Validar())
                 return;
-            persona = LlenaClase();
+            
             if (string.IsNullOrWhiteSpace(IdTextBox.Text) || IdTextBox.Text == "0")
                 paso = PersonasBLL.Guardar(persona);
             else
@@ -150,16 +127,15 @@ namespace rDetalle.UI.Registros
         private void BuscarButton_Click(object sender, RoutedEventArgs e)
         {
             int id;
-            Personas persona = new Personas();
             int.TryParse(IdTextBox.Text, out id);
             Limpiar();
 
 
-            persona = PersonasBLL.Buscar(id);
+           var pers = PersonasBLL.Buscar(id);
             
             if (persona != null)
             {
-                LlenaClampos(persona);
+                this.persona = pers; 
             }
             else
             {

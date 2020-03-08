@@ -8,9 +8,9 @@
         Title="rDetalle" Height="480" Width="800">
     <Grid Height="450" Width="800">
         <Label Content="Id" HorizontalAlignment="Left" Margin="27,45,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="IdTextBox" HorizontalAlignment="Left" Margin="70,49,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="IdTextBox" Text= "{Binding Id, Mode=TwoWay}" HorizontalAlignment="Left" Margin="70,49,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Label Content="Nombre" HorizontalAlignment="Left" Margin="10,88,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="NombreTextBox" HorizontalAlignment="Left" Margin="70,96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="NombreTextBox" Text= "{Binding Nombre, Mode=TwoWay}" HorizontalAlignment="Left" Margin="70,96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Label Content="Direccion" HorizontalAlignment="Left" Margin="7,147,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="DireccionTextBox" HorizontalAlignment="Left" Margin="70,151,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Label Content="Cedula" HorizontalAlignment="Left" Margin="14,199,0,0" VerticalAlignment="Top"/>
