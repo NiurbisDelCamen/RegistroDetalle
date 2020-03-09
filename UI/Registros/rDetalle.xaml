@@ -22,13 +22,24 @@
         <Label Content="Tipo" HorizontalAlignment="Left" Margin="219,255,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="TipoTextBox" HorizontalAlignment="Left" Margin="257,263,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Button x:Name="AgregarButton" Content="+" HorizontalAlignment="Left" Margin="382,260,0,0" VerticalAlignment="Top" Height="23" Width="24" Click="AgregarButton_Click"/>
-       
+
         <Button x:Name="RemoverFilaButton" Content="*RemoverFila" HorizontalAlignment="Left" Margin="0,377,0,0" VerticalAlignment="Top" Click="RemoverFilaButton_Click"/>
         <Button x:Name="NuevoButton" Content="Nuevo" HorizontalAlignment="Left" Margin="18,405,0,0" VerticalAlignment="Top" Click="NuevoButton_Click"/>
         <Button x:Name="GuardarButton" Content="Guardar" HorizontalAlignment="Left" Margin="130,405,0,0" VerticalAlignment="Top" Click="GuardarButton_Click"/>
         <Button x:Name="ElimarButton" Content="Eliminar" HorizontalAlignment="Left" Margin="264,405,0,0" VerticalAlignment="Top" Click="ElimarButton_Click"/>
         <Button x:Name="BuscarButton" Content="Buscar" HorizontalAlignment="Left" Margin="196,47,0,0" VerticalAlignment="Top" Click="BuscarButton_Click"/>
-        <DataGrid x:Name="DetalleDataGrid" Margin="0,290,0,78"/>
+        <DataGrid x:Name="DetalleDataGrid" Margin="0,290,0,78">
+            <DataGrid.ItemsSource>
+                <Binding Path="Telefonos" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+
+                </Binding>
+            </DataGrid.ItemsSource>
+        </DataGrid>
+
+
+
+
+
 
     </Grid>
 </Window>
